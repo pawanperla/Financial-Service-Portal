@@ -1,0 +1,138 @@
+<html>
+
+<head>
+  <title>Lakshmi Finance</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    /* CSS for header */
+    .header {
+      display: flex;
+      /* justify-content: space-between; */
+      align-items: center;
+      background-color: #111010;
+    }
+
+    .header .logo {
+      font-size: 25px;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+      color: ;
+      text-decoration: none;
+      margin-left: 30px;
+    }
+
+    .nav-items {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: black;
+      margin-left: 250px;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: #000;
+      padding: 35px 20px;
+      color: goldenrod;
+    }
+
+      div {
+            border-radius:25px;
+            height: 600px;
+             width: 400px;
+            padding: 50px;
+             margin: auto;
+             border: 2px solid black;
+             margin-top: 30px;
+            }
+            input[type=number] {
+               width: 100%;
+               padding: 12px 20px;
+               margin: 8px 0;
+               
+               border: 1px solid #ccc;
+               border-radius: 25px;
+               display: inline-block;
+               box-sizing: border-box;
+            }
+            button{
+                padding:10px;
+                background-color: cornsilk;
+                border-radius: 5px;
+            }
+            h1{
+                text-decoration: double;
+                color:burlywood;
+            }
+</style>
+</head>
+
+<body>
+  <header class="header">
+    <img style="margin-left: 10px ;" width="70px" height="70px" src="logo.jpg" alt="">
+    <a href="#" class="logo" style="color: goldenrod;">Lakshmi Finance</a>
+    <nav class="nav-items">
+      <a style="margin-left: 250px;" href="MAIN.html">Home</a>
+      <a style="margin-left: 40px;" href="SERVICES.html">Services</a>
+      <a style="margin-left: 40px;" href="POLICY.html">Policy</a>
+      <a style="margin-left: 40px;" href="CONTACT.html">Contact</a>
+    </nav>
+  </header>
+
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Land Finance Calculator</title>
+</head>
+<body>
+  <div>
+    <h1>Land Finance Calculator</h1>
+    <form id="landForm">
+        <label for="landArea">Land Area (in square meters):</label>
+        <input type="number" id="landArea" step="any" required><br>
+        
+        <label for="pricePerSquareMeter">Price per Square Meter (in rupees):</label>
+        <input type="number" id="pricePerSquareMeter" step="any" required><br>
+        
+        <label for="loanTerm">Loan Term (in years):</label>
+        <input type="number" id="loanTerm" required><br>
+        
+        <label for="interestRate">Annual Interest Rate (%):</label>
+        <input type="number" id="interestRate" step="any" required><br>
+        
+        <button type="button" onclick="calculateTotal()">Calculate Total</button>
+    </form>
+
+    <p id="result">
+      Amount to be paid  
+      <br>
+    </p>
+    </div>
+    <BR></BR><BR></BR>
+    <center><h1><a href="LAND.php">PROCEED</a></h1></center>
+    <script>
+        function calculateTotal() {
+            const landArea = parseFloat(document.getElementById("landArea").value);
+            const pricePerSquareMeter = parseFloat(document.getElementById("pricePerSquareMeter").value);
+            const loanTerm = parseInt(document.getElementById("loanTerm").value);
+            const interestRate = parseFloat(document.getElementById("interestRate").value);
+
+            const totalAmount = (landArea * pricePerSquareMeter) * (1 + (interestRate / 100)) ** loanTerm;
+
+            // document.getElementById("displayLandArea").textContent = landArea;
+            // document.getElementById("displayPricePerSquareMeter").textContent = pricePerSquareMeter.toFixed(2);
+            // document.getElementById("displayLoanTerm").textContent = loanTerm;
+            // document.getElementById("displayInterestRate").textContent = interestRate;
+            // document.getElementById("displayTotalAmount").textContent = totalAmount.toFixed(2);
+
+            document.getElementById("result").textContent = totalAmount;
+        }
+    </script>
+</body>
+</html>

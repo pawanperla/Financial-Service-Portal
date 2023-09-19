@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gold Loan Calculator</title>
+  <style>
+      div {
+            border-radius:25px;
+            height: 600px;
+             width: 400px;
+            padding: 50px;
+             margin: auto;
+             border: 2px solid black;
+             
+            }
+            input[type=number] {
+               width: 100%;
+               padding: 12px 20px;
+               margin: 8px 0;
+               
+               border: 1px solid #ccc;
+               border-radius: 25px;
+               display: inline-block;
+               box-sizing: border-box;
+            }
+            button{
+                padding:10px;
+                background-color: cornsilk;
+                border-radius: 5px;
+            }
+            h1{
+                text-decoration: double;
+                color:burlywood;
+            }
+  </style>
+</head>
+<body>
+    <div>
+  <h1>Gold Loan Calculator</h1>
+  <form id="goldLoanForm">
+    <label for="goldWeight">Gold Weight (grams): </label>
+    <input type="number" id="goldWeight" required><br>
+
+    <label for="goldPurity">Gold Purity (carats): </label>
+    <input type="number" id="goldPurity" required><br>
+
+    <label for="ltvRatio">Loan to Value (LTV) Ratio (%): </label>
+    <input type="number" id="ltvRatio" required><br>
+
+    <label for="goldRate">Gold Rate per gram (Currency): </label>
+    <input type="number" id="goldRate" required><br>
+
+    <label for="interestRate">Monthly Interest Rate (%): </label>
+    <input type="number" id="interestRate" required><br>
+
+    <label for="loanTenure">Loan Tenure (months): </label>
+    <input type="number" id="loanTenure" required><br>
+
+    <button type="button" onclick="calculateLoan()">Calculate</button>
+  </form>
+
+  <p id="loanAmount"></p>
+  <p id="totalRepayment"></p>
+</div>
+
+  <script>
+    function calculateLoan() {
+      const goldWeight = parseFloat(document.getElementById("goldWeight").value);
+      const goldPurity = parseFloat(document.getElementById("goldPurity").value);
+      const ltvRatio = parseFloat(document.getElementById("ltvRatio").value);
+      const goldRate = parseFloat(document.getElementById("goldRate").value);
+      const interestRate = parseFloat(document.getElementById("interestRate").value);
+      const loanTenure = parseFloat(document.getElementById("loanTenure").value);
+
+      // Validate input values
+      if (
+        isNaN(goldWeight) || isNaN(goldPurity) || isNaN(ltvRatio) ||
+        isNaN(goldRate) || isNaN(interestRate) || isNaN(loanTenure)
+      ) {
+        document.getElementById("loanAmount").innerText = "Please enter valid numeric values.";
+        document.getElementById("totalRepayment").innerText = "";
+        return;
+      }
+
+      // Calculate Loan Amount
+      const loanAmount = (goldWeight * goldPurity * goldRate * ltvRatio) / 100;
+
+      // Calculate Total Repayment Amount
+      const totalInterest = (loanAmount * interestRate * loanTenure) / 100;
+      const totalRepayment = loanAmount + totalInterest;
+
+      // Display the results
+      document.getElementById("loanAmount").innerText = `Loan Amount: ${loanAmount.toFixed(2)} (Currency)`;
+      document.getElementById("totalRepayment").innerText = `Total Repayment: ${totalRepayment.toFixed(2)} (Currency)`;
+    }
+  </script>
+</body>
+</html>
